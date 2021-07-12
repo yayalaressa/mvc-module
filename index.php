@@ -21,7 +21,7 @@ function show_error($message = '')
         $message = '404 - Page not found!';
     }
     require SYSPATH . 'config/config.php';
-    if(isset($config['404_override'])) {
+    if(!empty($config['404_override'])) {
         $message = '';
         include SYSPATH . 'views/' . $config['404_override'] .'.php';
     } else {
