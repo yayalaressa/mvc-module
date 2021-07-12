@@ -74,6 +74,3 @@ class Model
         mysql_free_result($this->_result);
     }
 }
-/* Akhir file model.php */
-/* Lokasi: ./model.php */
-

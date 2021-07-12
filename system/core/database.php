@@ -47,6 +47,4 @@ class Database
         }
     }
 }
-/* Akhir file database.php */
-/* Lokasi: ./database.php */
 

@@ -10,8 +10,8 @@ class WelcomeController extends Controller
     function index()
     {
         $this
-            ->load
-            ->view('welcome_message');
+            ->theme
+            ->render('welcome_message');
     }
 }
 

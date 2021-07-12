@@ -1,4 +1,4 @@
-
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,9 +76,9 @@
         <div id="body">
             <p>Halaman ini hanya contoh.</p>
             <p>Jika kamu ingin mengedit halaman ini kamu dapat menemukannya di:</p>
-            <code>apps/views/welcome.php</code>
+            <code>modules/welcome/views/welcome.php</code>
             <p>Controller yang sesuai untuk halaman ini ditemukan di:</p>
-            <code>apps/controllers/welcome.php</code>
+            <code>modules/welcome/controllers/welcome.php</code>
         </div>
     </div>
 </body>

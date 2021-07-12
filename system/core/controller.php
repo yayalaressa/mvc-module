@@ -2,7 +2,7 @@
 
 class Controller
 {
-    protected $load;
+    public $load;
     private static $instance;
     public $config;
     
@@ -26,7 +26,9 @@ class Controller
         {
             spl_autoload_register('load_db');
         }
-        
+        $this->load->helper('dispatch');
+        $this->load->library('flash_message');
+        $this->load->library('theme');
     }
 
     public static function &get_instance()

@@ -52,48 +52,46 @@ class Router
             self::$_segment[1] = $config['default_controller'];
         }
         $controller_path = BASEPATH . 'modules/' . self::$_segment[0] . '/controllers/' . self::$_segment[1] . '.php';
-        if (file_exists($controller_path))
+        if (!file_exists($controller_path))
+        {
+        	show_error('file kontroller tidak ada');
+        }
+        else
         {
             require SYSPATH . 'core/controller.php';
             require $controller_path;
             $class = ucfirst(self::$_segment[1]) . 'Controller';
             if (!class_exists($class))
             {
-                show_error('kelas tidak ada');
+                show_error('kelas kontroller tidak ada');
             }
-            if(get_parent_class($class) === 'Controller')
+            if(get_parent_class($class) !== 'Controller')
             {
-                $this->_controller = new $class();
+            	show_error('parent kontroller tidak sesuai');
             } else {
-                show_error('parent kontroller tidak sesuai');
+                $this->_controller = new $class();
             }
-        }
-        else
-        {
-            show_error('file kontroller tidak ada');
         }
     }
     
     private function _set_method()
     {
-
         if (!isset(self::$_segment[2]))
         {
             self::$_segment[2] = 'index';
         }
 
-        if (method_exists($this->_controller, self::$_segment[2]))
+        if (!method_exists($this->_controller, self::$_segment[2]))
+        {
+        	show_error('method tidak ada');
+        }
+        else
         {
             $this->_method = self::$_segment[2];
-
             if (substr($this->_method, 0, 1) == '_')
             {
                 show_error('private method');
             }
-        }
-        else
-        {
-            show_error('method tidak ada');
         }
     }
 
