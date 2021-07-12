@@ -5,14 +5,17 @@ class Controller
     public $load;
     private static $instance;
     public $config;
+    public $input;
     
     public function __construct()
     {
         self::$instance = $this;
         require_once SYSPATH . 'core/loader.php';
         require_once SYSPATH . 'core/config.php';
+        require_once SYSPATH . 'core/input.php';
         $this->load = new Loader();
         $this->config = new Config();
+        $this->input = new Input();
 
         if (!$this
             ->config

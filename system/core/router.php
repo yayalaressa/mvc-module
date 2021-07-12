@@ -18,9 +18,9 @@ class Router
     private function _set_uri()
     {
 
-        $uri = str_replace($_SERVER['REQUEST_URI'], '', $_SERVER['SCRIPT_NAME']);
+        $uri_string = str_replace($_SERVER['REQUEST_URI'], '', $_SERVER['SCRIPT_NAME']);
 
-        if ($uri == 'index.php')
+        if ($uri_string == 'index.php')
         {
             $uri_string = '';
         }
@@ -31,7 +31,7 @@ class Router
             $uri_string = preg_replace("|/*(.+?)/*$|", "\\1", str_replace("\\", "/", $uri_string));
             $uri_string = trim($uri_string, '/');
         }
-        if($uri !== 'index.php')
+        if(!preg_match('/index\.php/', $_SERVER['REQUEST_URI'], $matches))
         {
             $ex = explode('/', $uri_string);
             $uri_string = str_replace($ex[0] . '/', '', $uri_string);

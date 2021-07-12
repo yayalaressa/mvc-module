@@ -9,6 +9,7 @@ class WelcomeController extends Controller
     }
     function index()
     {
+        print_r($this->input->get('test'));
         $this
             ->theme
             ->render('welcome_message');
