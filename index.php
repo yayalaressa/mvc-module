@@ -7,6 +7,7 @@ define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVE
 
 ob_start();
 session_start();
+
 require SYSPATH . 'core/router.php';
 $router = new Router();
 $router->do_request();
@@ -17,7 +18,15 @@ function show_error($message = '')
     ob_end_clean();
     if ($message == '')
     {
-        $message = '<b>404 - Page not found!</b>';
+        $message = '404 - Page not found!';
     }
-    exit($message);
+    require SYSPATH . 'config/config.php';
+    if(isset($config['404_override'])) {
+        $message = '';
+        include SYSPATH . 'views/' . $config['404_override'] .'.php';
+    } else {
+        $heading = 'Your app error!';
+        include SYSPATH . 'views/errors/error_404.php';
+    }
+    exit();
 }

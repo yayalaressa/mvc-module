@@ -15,4 +15,5 @@ else
 }
 
 $config['default_controller'] = 'welcome';
+$config['404_override'] = ''; // e.g place your error handling on /system/views/your_script_here
 
