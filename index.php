@@ -6,8 +6,6 @@ define('SYSPATH', BASEPATH . 'system' . DIRECTORY_SEPARATOR);
 define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 
 ob_start();
-session_start();
-
 require SYSPATH . 'core/router.php';
 $router = new Router();
 $router->do_request();
