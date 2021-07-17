@@ -47,6 +47,7 @@ class Session
 
 	public function unset_userdata($key)
 	{
+		if (session_status() == PHP_SESSION_NONE) return false;
 		if (is_array($key))
 		{
 			foreach ($key as $k)
@@ -62,11 +63,13 @@ class Session
 
 	public function has_userdata($key)
 	{
+		if (session_status() == PHP_SESSION_NONE) return false;
 		return isset($_SESSION[$key]);
 	}
 
 	public function sess_destroy()
 	{
+		if (session_status() == PHP_SESSION_NONE) return false;
 		session_destroy();
 	}
 
